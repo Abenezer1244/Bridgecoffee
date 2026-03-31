@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Windows/.claude/skills/**)",
+      "Read(//c/Users/Windows/.claude/plugins/**)",
+      "Read(//c/Users/Windows/.claude/**)",
+      "Bash(npm list:*)",
+      "Bash(git:*)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(npm init:*)",
+      "Bash(npm pkg:*)",
+      "Bash(npm install:*)",
+      "Bash(cd:*)",
+      "Bash(node -e \"require\\(''next/package.json''\\).version\")",
+      "Bash(node -e \"console.log\\(require\\(''next/package.json''\\).version\\)\")",
+      "Bash(npm run:*)",
+      "Bash(ls -la *.jpg)",
+      "Bash(curl -L -o \"02-takeaway-latte.jpg\" \"https://i.ibb.co/20qbXZ6C/john-murphey-S20-DTk-RWdn-A-unsplash.jpg\")",
+      "Bash(curl -L -o \"03-cappuccino.jpg\" \"https://i.ibb.co/Rprs775b/yianni-k-Wcewenz5l-VY-unsplash.jpg\")",
+      "Bash(curl -L -o \"05-ground-coffee.jpg\" \"https://i.ibb.co/Rp490yHS/mae-mu-0-EWWLx-etkw-unsplash.jpg\")",
+      "Bash(curl -L -o \"06-latte-window.jpg\" \"https://i.ibb.co/6Rqv25WG/lex-sirikiat-lq-II6-R4h-Hm-Y-unsplash.jpg\")",
+      "Bash(curl -L -o \"08-espresso-glass.jpg\" \"https://i.ibb.co/1Jzd982K/ionela-mat-p-STRBOVv2-Hw-unsplash.jpg\")",
+      "Bash(curl -L -o \"09-black-coffee.jpg\" \"https://i.ibb.co/67ZtDkK1/brent-ninaber-vb-Dz2-XLwwo-unsplash.jpg\")",
+      "Bash(curl -L -o \"unnamed-7.webp\" \"https://i.ibb.co/nqtqYdT6/unnamed-7.webp\")",
+      "Bash(curl -L -o \"unnamed-6.webp\" \"https://i.ibb.co/mFHQMNKb/unnamed-6.webp\")",
+      "Bash(curl -L -o \"unnamed-5.webp\" \"https://i.ibb.co/Z1bKpQm4/unnamed-5.webp\")",
+      "Bash(curl -L -o \"unnamed-4.webp\" \"https://i.ibb.co/sdYQND1T/unnamed-4.webp\")",
+      "Bash(curl -L -o \"unnamed-3.webp\" \"https://i.ibb.co/S4Pc602T/unnamed-3.webp\")",
+      "Bash(curl -L -o \"2024-09-19-1.webp\" \"https://i.ibb.co/9k2Gnspn/2024-09-19-1.webp\")",
+      "Bash(curl -L -o \"unnamed-2.webp\" \"https://i.ibb.co/1JjCPrB5/unnamed-2.webp\")",
+      "Bash(curl -L -o \"2024-09-18-2.webp\" \"https://i.ibb.co/PGPZ2HGg/2024-09-18-2.webp\")",
+      "Bash(curl -L -o \"2024-09-18-1.webp\" \"https://i.ibb.co/G4Wv8pm1/2024-09-18-1.webp\")",
+      "Bash(curl -L -o \"2024-09-18.webp\" \"https://i.ibb.co/MDN062T2/2024-09-18.webp\")",
+      "Bash(curl -L -o \"unnamed-1.webp\" \"https://i.ibb.co/dwr64LKf/unnamed-1.webp\")",
+      "Bash(curl -L -o \"2024-09-19.webp\" \"https://i.ibb.co/wZGwcjdJ/2024-09-19.webp\")",
+      "Bash(curl -L -o \"unnamed.webp\" \"https://i.ibb.co/N6yF7vvD/unnamed.webp\")",
+      "Bash(curl -L -o \"2024-09-18-photo.jpg\" \"https://i.ibb.co/prJd6Ljz/2024-09-18.jpg\")",
+      "Bash(npx next:*)"
+    ]
+  }
+}

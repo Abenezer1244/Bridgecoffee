@@ -4,6 +4,27 @@
 
 An Awwwards-level scrollytelling landing page for Bridge Coffee, a single-location artisan coffee shop. The experience is a cinematic brand story — warm, moody, editorial — driven by scroll-linked canvas image transitions, premium serif typography, and emotionally resonant copywriting. Supporting pages include Menu (Supabase-driven), Order (pickup, no payment), and About.
 
+## Business Details
+
+- **Name:** Bridge Coffee
+- **Rating:** 4.7 stars (112 Google reviews)
+- **Price Range:** $1–10
+- **Located in:** North Seattle Church
+- **Address:** 2150 N 122nd St, Seattle, WA 98133
+- **Phone:** (206) 457-8690
+- **Hours:**
+  - Monday: 8 AM–3 PM
+  - Tuesday: 8 AM–3 PM
+  - Wednesday: 8 AM–4 PM
+  - Thursday: 8 AM–3 PM
+  - Friday: 8 AM–3 PM
+  - Saturday: Closed
+  - Sunday: Closed
+- **Description:** Comfortable coffee shop with Wi-Fi serving up lattes and French press coffee, plus pastries.
+- **Offerings:** Lattes, French press coffee, pastries (caramel latte, orange hazelnut buns noted in reviews)
+- **Vibe (from reviews):** Cozy, friendly staff, great music, local art on walls, natural light from big windows, lots of seating, kid play room in back, perfect for laptop work or coffee dates. Located inside a church but purely a neighborhood coffee shop — "just trying to brighten everyone's day one cup at a time."
+- **People typically spend:** 10 min to 2 hr
+
 ## Tech Stack
 
 - **Framework:** Next.js 14 (App Router)
@@ -206,7 +227,8 @@ bridgecoffee/
 **Copy (centered):**
 - Headline: "A space that breathes."
 - Subcopy: "Whether you stay for an hour or just a moment — this is your place."
-- "Warm light. Quiet corners. Coffee done right."
+- "Big windows. Natural light. Local art on the walls. Music that sets the mood."
+- "A neighborhood coffee shop trying to brighten everyone's day, one cup at a time."
 
 ### CTA / Close (88–100%)
 
