@@ -44,6 +44,11 @@ export default function ScrollCanvas({
     return () => window.removeEventListener("resize", resizeCanvas);
   }, [resizeCanvas]);
 
+  // When draw changes identity (images finish loading), bust the progress cache
+  useEffect(() => {
+    lastProgressRef.current = -1;
+  }, [draw]);
+
   // Draw loop
   useEffect(() => {
     const canvas = canvasRef.current;
