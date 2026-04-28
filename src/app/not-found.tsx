@@ -3,14 +3,14 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6">
-      <h1 className="font-serif text-6xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-ivory to-amber tracking-tight">
+      <h1 className="font-serif text-6xl md:text-8xl text-ivory tracking-tight">
         404
       </h1>
       <p className="mt-4 font-serif text-xl text-ivory/60">
-        This page doesn&apos;t exist.
+        We can&apos;t find this page.
       </p>
       <p className="mt-2 text-sm text-ivory/30">
-        Maybe it&apos;s time for a coffee break instead.
+        You could come by for a latte instead &mdash; we&apos;re at 2150 N 122nd.
       </p>
       <Link
         href="/"

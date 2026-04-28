@@ -2,8 +2,8 @@ import { ImageFrame } from "@/types";
 
 export const imageSequence: ImageFrame[] = [
   {
-    src: "/images/sequence/01-hero-latte.jpg",
-    alt: "Overhead latte heart in dark ceramic cup on warm wood — hero beauty shot",
+    src: "/images/sequence/01-hero-latte.webp",
+    alt: "Latte rosetta in a white ceramic cup on weathered wood against a dark background — hero beauty shot",
     startProgress: 0,
     endProgress: 0.15,
   },

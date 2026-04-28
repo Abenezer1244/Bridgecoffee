@@ -16,12 +16,12 @@ export default function HeroCTA() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-ivory to-amber tracking-tight">
-          Drink something real.
+        <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-ivory tracking-tight">
+          Come meet the neighborhood.
         </h2>
 
         <p className="mt-6 font-serif text-xl md:text-2xl text-ivory/80">
-          Handcrafted coffee. Every single day.
+          The coffee&apos;s ready. So is the table.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
@@ -29,7 +29,7 @@ export default function HeroCTA() {
             href="/menu"
             className="pointer-events-auto px-8 py-3 bg-amber text-espresso font-sans text-sm uppercase tracking-widest-plus rounded-sm hover:bg-amber-light transition-colors duration-300"
           >
-            Explore Our Menu
+            See the Menu
           </Link>
           <a
             href="https://maps.google.com/?q=2150+N+122nd+St+Seattle+WA+98133"
@@ -42,7 +42,7 @@ export default function HeroCTA() {
         </div>
 
         <p className="mt-8 text-xs uppercase tracking-widest text-ivory/30">
-          Open daily. Sourced honestly. Served with care.
+          2150 N 122nd &middot; Mon&ndash;Fri 8 to 3
         </p>
       </motion.div>
     </section>

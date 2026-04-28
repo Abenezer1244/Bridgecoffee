@@ -23,8 +23,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "Playfair Display", "Georgia", "serif"],
-        sans: ["var(--font-dm-sans)", "DM Sans", "system-ui", "sans-serif"],
+        serif: ["var(--font-display)", "Young Serif", "Georgia", "serif"],
+        sans: ["var(--font-body)", "Figtree", "system-ui", "sans-serif"],
       },
       letterSpacing: {
         "widest-plus": "0.2em",
