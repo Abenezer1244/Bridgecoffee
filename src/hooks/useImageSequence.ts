@@ -204,7 +204,7 @@ export function useImageSequence(
       ctx.globalAlpha = 1;
       drawVignette(ctx, width, height);
     },
-    [frames]
+    [frames, isLoaded]
   );
 
   return { isLoaded, loadProgress, draw, getCurrentAlt };

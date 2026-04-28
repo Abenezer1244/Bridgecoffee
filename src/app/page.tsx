@@ -13,7 +13,7 @@ export default function Home() {
             {/* Hero / Intro (0–15%) */}
             <StoryBeat
               progress={progress}
-              progressStart={0}
+              progressStart={-0.05}
               progressEnd={0.15}
               alignment="center"
             >
