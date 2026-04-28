@@ -1,16 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HeroCTA() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 bg-espresso relative">
-      {/* Subtle top gradient to blend with canvas */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-espresso to-transparent" />
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 bg-espresso relative overflow-hidden">
+      {/* Background shop photo */}
+      <Image
+        src="/images/shop/unnamed-6.webp"
+        alt="Bridge Coffee seating area with warm natural light"
+        fill
+        className="object-cover opacity-30"
+        sizes="100vw"
+      />
+      {/* Top gradient to blend with scrollytelling canvas */}
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-espresso to-transparent z-10" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-espresso to-transparent z-10" />
 
       <motion.div
-        className="text-center max-w-2xl"
+        className="relative z-20 text-center max-w-2xl"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
