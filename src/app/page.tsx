@@ -46,7 +46,7 @@ export default function Home() {
               </h2>
               <p className="mt-6 max-w-lg text-base md:text-lg leading-relaxed">
                 We&apos;re a non-profit cafe. Every cup helps keep this room
-                open &mdash; and helps fund the church&apos;s family programs
+                open, and helps fund the church&apos;s family programs
                 next door.
               </p>
               <p className="mt-3 max-w-lg text-sm text-ivory/40 leading-relaxed">
@@ -139,7 +139,7 @@ export default function Home() {
                 See you this week.
               </h2>
               <p className="mt-4 font-serif text-lg md:text-xl text-ivory/60">
-                8 AM &ndash; 3 PM, Monday through Friday.
+                8 AM to 3 PM, Monday through Friday.
               </p>
             </StoryBeat>
           </>

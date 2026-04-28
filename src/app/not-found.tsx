@@ -10,7 +10,7 @@ export default function NotFound() {
         We can&apos;t find this page.
       </p>
       <p className="mt-2 text-sm text-ivory/30">
-        You could come by for a latte instead &mdash; we&apos;re at 2150 N 122nd.
+        You could come by for a latte instead. We&apos;re at 2150 N 122nd.
       </p>
       <Link
         href="/"

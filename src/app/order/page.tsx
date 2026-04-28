@@ -173,7 +173,7 @@ export default function OrderPage() {
             Order for Pickup
           </h1>
           <p className="mt-4 text-base text-ivory/50">
-            Order ahead, pick up at the counter. We don&apos;t deliver &mdash;
+            Order ahead, pick up at the counter. We don&apos;t deliver.
             we&apos;d rather see you in person.
           </p>
         </div>
@@ -351,7 +351,7 @@ export default function OrderPage() {
                           : "bg-amber/20 text-ivory/30 cursor-not-allowed"
                       }`}
                     >
-                      {submitting ? "Placing Order..." : "Place Order — Pay at Counter"}
+                      {submitting ? "Placing Order..." : "Place Order · Pay at Counter"}
                     </button>
                   </div>
                 </>

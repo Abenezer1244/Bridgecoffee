@@ -12,7 +12,7 @@ export default function Error({
         Something went wrong.
       </h1>
       <p className="mt-4 text-sm text-ivory/40">
-        We spilled something. Give it another try &mdash; or stop by the
+        We spilled something. Give it another try, or stop by the
         shop and we&apos;ll make it right.
       </p>
       <div className="mt-8 flex items-center gap-3">

@@ -42,7 +42,7 @@ export default function HeroCTA() {
         </div>
 
         <p className="mt-8 text-xs uppercase tracking-widest text-ivory/30">
-          2150 N 122nd &middot; Mon&ndash;Fri 8 to 3
+          2150 N 122nd &middot; Mon to Fri, 8 to 3
         </p>
       </motion.div>
     </section>

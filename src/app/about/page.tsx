@@ -47,11 +47,11 @@ const fadeInUp = {
 };
 
 const hours = [
-  { day: "Monday", time: "8 AM – 3 PM" },
-  { day: "Tuesday", time: "8 AM – 3 PM" },
-  { day: "Wednesday", time: "8 AM – 3 PM" },
-  { day: "Thursday", time: "8 AM – 3 PM" },
-  { day: "Friday", time: "8 AM – 3 PM" },
+  { day: "Monday", time: "8 AM to 3 PM" },
+  { day: "Tuesday", time: "8 AM to 3 PM" },
+  { day: "Wednesday", time: "8 AM to 3 PM" },
+  { day: "Thursday", time: "8 AM to 3 PM" },
+  { day: "Friday", time: "8 AM to 3 PM" },
   { day: "Saturday", time: "Closed" },
   { day: "Sunday", time: "Closed" },
 ];
