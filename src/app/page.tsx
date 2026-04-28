@@ -18,15 +18,15 @@ export default function Home() {
               alignment="center"
             >
               <div id="story" />
-              <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-b from-ivory to-amber tracking-tight">
+              <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl text-ivory tracking-tight">
                 Bridge Coffee
               </h1>
               <p className="mt-4 font-serif text-xl md:text-2xl text-ivory/80">
-                Craft, poured with intention.
+                The living room of 122nd Street.
               </p>
               <p className="mt-4 max-w-md text-base leading-relaxed text-center">
-                Artisan coffee roasted locally and served with purpose — for
-                mornings worth savoring.
+                A non-profit neighborhood cafe inside North Seattle Church.
+                Small-batch coffee, a big table, and room for whoever walks in.
               </p>
             </StoryBeat>
 
@@ -38,18 +38,19 @@ export default function Home() {
               alignment="left"
             >
               <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-ivory tracking-tight">
-                Born from the
+                Opened in 2012.
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber to-amber-light">
-                  perfect bean.
+                <span className="text-amber">
+                  Still here because you are.
                 </span>
               </h2>
               <p className="mt-6 max-w-lg text-base md:text-lg leading-relaxed">
-                We source single-origin beans from family farms, roasted in small
-                batches to unlock every note of flavor.
+                We&apos;re a non-profit cafe. Every cup helps keep this room
+                open &mdash; and helps fund the church&apos;s family programs
+                next door.
               </p>
               <p className="mt-3 max-w-lg text-sm text-ivory/40 leading-relaxed">
-                The journey from seed to cup is one we take seriously.
+                Started by neighbors who wanted a table where everyone was welcome.
               </p>
             </StoryBeat>
 
@@ -62,22 +63,22 @@ export default function Home() {
             >
               <div id="craft" />
               <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-ivory tracking-tight">
-                Precision is
+                Coffee that earns
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber to-amber-light">
-                  our process.
+                <span className="text-amber">
+                  its reputation.
                 </span>
               </h2>
               <div className="mt-6 space-y-3 max-w-lg">
                 <p className="text-base md:text-lg leading-relaxed">
-                  Grind size, water temperature, extraction time — every variable
-                  dialed in.
+                  Herkimer-roasted beans through every espresso.
                 </p>
                 <p className="text-sm text-ivory/50 leading-relaxed">
-                  Our baristas are craftspeople. Your espresso, their masterpiece.
+                  The caramel latte has a list of regulars. The orange
+                  hazelnut bun sells out before noon.
                 </p>
                 <p className="text-xs uppercase tracking-widest-plus text-amber/60">
-                  No shortcuts. No compromises. Just coffee done right.
+                  If it doesn&apos;t taste right, it doesn&apos;t reach the counter.
                 </p>
               </div>
             </StoryBeat>
@@ -90,25 +91,42 @@ export default function Home() {
               alignment="center"
             >
               <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-ivory tracking-tight">
-                A space that
+                Stay as long
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber to-amber-light">
-                  breathes.
+                <span className="text-amber">
+                  as you&apos;d like.
                 </span>
               </h2>
               <p className="mt-6 max-w-lg text-base md:text-lg leading-relaxed text-center">
-                Whether you stay for an hour or just a moment — this is your
-                place.
+                Big windows, free Wi-Fi, quiet corners for working, and a
+                side room where kids can play without bothering anyone.
               </p>
               <p className="mt-3 max-w-lg text-sm text-ivory/50 leading-relaxed text-center">
-                Big windows. Natural light. Local art on the walls. Music that
-                sets the mood.
+                Heated covered porch when it&apos;s cold. Bike rack out front.
               </p>
               <p className="mt-4 max-w-lg text-xs text-ivory/30 italic text-center">
-                A neighborhood coffee shop trying to brighten everyone&apos;s day,
-                one cup at a time.
+                Devon runs the counter. He&apos;s probably why you keep coming back.
               </p>
             </StoryBeat>
+
+            {/* Scroll hint — fades out as soon as the user starts scrolling */}
+            {progress < 0.05 && (
+              <div
+                className="fixed bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-none flex flex-col items-center gap-1.5"
+                style={{ opacity: Math.max(0, 1 - progress / 0.05) }}
+              >
+                <span className="text-[9px] uppercase tracking-widest-plus text-ivory/30">Scroll</span>
+                <svg
+                  className="w-4 h-4 text-ivory/30 animate-bounce"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            )}
 
             {/* CTA tease (88–100%) */}
             <StoryBeat
@@ -117,11 +135,11 @@ export default function Home() {
               progressEnd={1}
               alignment="center"
             >
-              <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-ivory to-amber tracking-tight">
-                Drink something real.
+              <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-ivory tracking-tight">
+                See you this week.
               </h2>
               <p className="mt-4 font-serif text-lg md:text-xl text-ivory/60">
-                Scroll down
+                8 AM &ndash; 3 PM, Monday through Friday.
               </p>
             </StoryBeat>
           </>

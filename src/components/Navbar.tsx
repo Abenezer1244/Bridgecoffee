@@ -2,19 +2,21 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useCart } from "@/contexts/CartContext";
 
 const navLinks = [
-  { label: "Story", href: "#story" },
-  { label: "Menu", href: "/menu" },
-  { label: "Craft", href: "#craft" },
-  { label: "Location", href: "#location" },
-  { label: "Order", href: "/order" },
+  { label: "Menu", href: "/menu", activeOn: "/menu" },
+  { label: "Visit", href: "/about#find-us", activeOn: "/about" },
+  { label: "Order", href: "/order", activeOn: "/order" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const { itemCount } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -39,13 +41,15 @@ export default function Navbar() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      const el = document.querySelector(href);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-        setMobileOpen(false);
+    if (href.includes("#")) {
+      const [path, anchor] = href.split("#");
+      // If already on the target route, smooth-scroll instead of navigating
+      if (path === pathname) {
+        e.preventDefault();
+        const el = document.getElementById(anchor);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
       }
+      setMobileOpen(false);
     } else {
       setMobileOpen(false);
     }
@@ -54,7 +58,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+        className={`fixed top-8 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
           scrolled
             ? "bg-[rgba(13,10,7,0.82)] backdrop-blur-[12px]"
             : "bg-transparent"
@@ -72,6 +76,7 @@ export default function Navbar() {
               <NavLink
                 key={link.label}
                 href={link.href}
+                isActive={pathname === link.activeOn}
                 onClick={(e) => handleAnchorClick(e, link.href)}
               >
                 {link.label}
@@ -83,10 +88,29 @@ export default function Navbar() {
           <div className="flex items-center justify-end gap-4">
             <Link
               href="/order"
-              className="hidden md:inline-flex px-5 py-2 border border-amber/60 text-amber text-xs uppercase tracking-widest-plus rounded-sm hover:border-amber hover:shadow-[0_0_12px_rgba(200,135,58,0.15)] hover:scale-[1.02] transition-all duration-300"
+              className="hidden md:inline-flex items-center gap-2 px-5 py-2 border border-amber/60 text-amber text-xs uppercase tracking-widest-plus rounded-sm hover:border-amber hover:text-amber-light transition-colors duration-200"
             >
-              Order Now
+              <span>{itemCount > 0 ? "Your Order" : "Order Now"}</span>
+              {itemCount > 0 && (
+                <span
+                  className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-amber text-espresso text-[10px] font-semibold tabular-nums"
+                  aria-label={`${itemCount} items in cart`}
+                >
+                  {itemCount}
+                </span>
+              )}
             </Link>
+
+            {/* Mobile cart chip — only when items in cart */}
+            {itemCount > 0 && (
+              <Link
+                href="/order"
+                className="md:hidden inline-flex items-center justify-center min-w-[24px] h-6 px-2 rounded-full bg-amber text-espresso text-[10px] font-semibold tabular-nums"
+                aria-label={`${itemCount} items in cart — go to order`}
+              >
+                {itemCount}
+              </Link>
+            )}
 
             {/* Mobile hamburger */}
             <button
@@ -96,7 +120,7 @@ export default function Navbar() {
             >
               <span
                 className={`block w-5 h-[1.5px] bg-ivory transition-transform duration-300 ${
-                  mobileOpen ? "rotate-45 translate-y-[4.5px]" : ""
+                  mobileOpen ? "rotate-45 translate-y-[7.5px]" : ""
                 }`}
               />
               <span
@@ -106,7 +130,7 @@ export default function Navbar() {
               />
               <span
                 className={`block w-5 h-[1.5px] bg-ivory transition-transform duration-300 ${
-                  mobileOpen ? "-rotate-45 -translate-y-[4.5px]" : ""
+                  mobileOpen ? "-rotate-45 -translate-y-[7.5px]" : ""
                 }`}
               />
             </button>
@@ -131,23 +155,13 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05, duration: 0.3 }}
               >
-                {link.href.startsWith("#") ? (
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleAnchorClick(e, link.href)}
-                    className="font-sans text-2xl uppercase tracking-widest-plus text-ivory/70 hover:text-amber transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="font-sans text-2xl uppercase tracking-widest-plus text-ivory/70 hover:text-amber transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                )}
+                <Link
+                  href={link.href}
+                  onClick={(e) => handleAnchorClick(e, link.href)}
+                  className="font-sans text-2xl uppercase tracking-widest-plus text-ivory/70 hover:text-amber transition-colors"
+                >
+                  {link.label}
+                </Link>
               </motion.div>
             ))}
 
@@ -173,28 +187,26 @@ export default function Navbar() {
 
 function NavLink({
   href,
+  isActive,
   onClick,
   children,
 }: {
   href: string;
+  isActive?: boolean;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   children: React.ReactNode;
 }) {
-  const isInternal = !href.startsWith("#");
-  const className =
-    "relative font-sans text-xs uppercase tracking-widest-plus text-ivory/60 hover:text-ivory transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-amber after:transition-all after:duration-300 hover:after:w-full";
-
-  if (isInternal) {
-    return (
-      <Link href={href} className={className} onClick={onClick}>
-        {children}
-      </Link>
-    );
-  }
-
   return (
-    <a href={href} className={className} onClick={onClick}>
+    <Link
+      href={href}
+      onClick={onClick}
+      className={`relative font-sans text-xs uppercase tracking-widest-plus transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-amber after:transition-all after:duration-300 hover:after:w-full ${
+        isActive
+          ? "text-ivory after:w-full"
+          : "text-ivory/60 hover:text-ivory after:w-0"
+      }`}
+    >
       {children}
-    </a>
+    </Link>
   );
 }

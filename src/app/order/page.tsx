@@ -1,47 +1,10 @@
 "use client";
 
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MenuItem, CartItem } from "@/types";
-import { fallbackMenuItems } from "@/lib/menu-data";
-
-// Cart reducer
-type CartAction =
-  | { type: "ADD"; item: MenuItem }
-  | { type: "REMOVE"; itemId: string }
-  | { type: "UPDATE_QTY"; itemId: string; quantity: number }
-  | { type: "CLEAR" };
-
-function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
-  switch (action.type) {
-    case "ADD": {
-      const existing = state.find((c) => c.menuItem.id === action.item.id);
-      if (existing) {
-        return state.map((c) =>
-          c.menuItem.id === action.item.id
-            ? { ...c, quantity: c.quantity + 1 }
-            : c
-        );
-      }
-      return [...state, { menuItem: action.item, quantity: 1 }];
-    }
-    case "REMOVE":
-      return state.filter((c) => c.menuItem.id !== action.itemId);
-    case "UPDATE_QTY":
-      if (action.quantity <= 0) {
-        return state.filter((c) => c.menuItem.id !== action.itemId);
-      }
-      return state.map((c) =>
-        c.menuItem.id === action.itemId
-          ? { ...c, quantity: action.quantity }
-          : c
-      );
-    case "CLEAR":
-      return [];
-    default:
-      return state;
-  }
-}
+import { MenuItem } from "@/types";
+import { fetchMenuItems } from "@/lib/fetchMenu";
+import { useCart } from "@/contexts/CartContext";
 
 // Generate pickup time options
 function getPickupTimeOptions(): { label: string; value: string }[] {
@@ -57,7 +20,7 @@ function getPickupTimeOptions(): { label: string; value: string }[] {
     // Skip weekends
     if (day === 0 || day === 6) continue;
 
-    const closeHour = day === 3 ? 16 : 15; // Wed closes 4 PM
+    const closeHour = 15; // Mon–Fri close at 3 PM
     const startHour = dayOffset === 0 ? Math.max(8, now.getHours() + 1) : 8;
 
     for (let hour = startHour; hour < closeHour; hour++) {
@@ -86,8 +49,8 @@ function getPickupTimeOptions(): { label: string; value: string }[] {
 }
 
 export default function OrderPage() {
+  const { cart, addItem, updateQuantity, clear, total, itemCount } = useCart();
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  const [cart, dispatch] = useReducer(cartReducer, []);
   const [customerName, setCustomerName] = useState("");
   const [pickupTime, setPickupTime] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -99,38 +62,10 @@ export default function OrderPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function fetchMenu() {
-      try {
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-        if (supabaseUrl && supabaseKey && !supabaseUrl.includes("your-supabase")) {
-          const { supabase } = await import("@/lib/supabase");
-          const { data } = await supabase
-            .from("menu_items")
-            .select("*")
-            .eq("available", true)
-            .order("sort_order");
-
-          if (data && data.length > 0) {
-            setMenuItems(data as MenuItem[]);
-            return;
-          }
-        }
-      } catch {
-        // Fall through
-      }
-      setMenuItems(fallbackMenuItems);
-    }
-    fetchMenu();
+    fetchMenuItems().then(setMenuItems);
   }, []);
 
-  const total = cart.reduce(
-    (sum, c) => sum + c.menuItem.price * c.quantity,
-    0
-  );
-
-  const pickupOptions = getPickupTimeOptions();
+  const pickupOptions = useMemo(() => getPickupTimeOptions(), []);
   const canSubmit = customerName.trim().length > 0 && pickupTime && cart.length > 0;
 
   async function handleSubmit() {
@@ -162,7 +97,7 @@ export default function OrderPage() {
       }
 
       setConfirmation(data);
-      dispatch({ type: "CLEAR" });
+      clear();
     } catch {
       setError("Failed to place order. Please try again.");
     } finally {
@@ -173,7 +108,7 @@ export default function OrderPage() {
   // Confirmation screen
   if (confirmation) {
     return (
-      <div className="min-h-screen pt-24 pb-16 px-6 flex items-center justify-center">
+      <div className="min-h-screen pt-28 pb-16 px-6 flex items-center justify-center">
         <motion.div
           className="text-center max-w-md"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -201,7 +136,7 @@ export default function OrderPage() {
             <p>
               Total: <span className="text-amber">${confirmation.total.toFixed(2)}</span>
             </p>
-            <p className="text-ivory/40 mt-4">Pay at the counter when you pick up.</p>
+            <p className="text-ivory/70 mt-4">Pay at the counter when you pick up.</p>
           </div>
           <button
             onClick={() => setConfirmation(null)}
@@ -231,14 +166,15 @@ export default function OrderPage() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-6">
+    <div className="min-h-screen pt-28 pb-28 lg:pb-16 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="font-serif text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-b from-ivory to-amber tracking-tight">
+          <h1 className="font-serif text-5xl md:text-7xl text-ivory tracking-tight">
             Order for Pickup
           </h1>
           <p className="mt-4 text-base text-ivory/50">
-            Choose your items, we&apos;ll have them ready when you arrive.
+            Order ahead, pick up at the counter. We don&apos;t deliver &mdash;
+            we&apos;d rather see you in person.
           </p>
         </div>
 
@@ -278,35 +214,29 @@ export default function OrderPage() {
                             <div className="flex items-center gap-2">
                               <button
                                 onClick={() =>
-                                  dispatch({
-                                    type: "UPDATE_QTY",
-                                    itemId: item.id,
-                                    quantity: inCart.quantity - 1,
-                                  })
+                                  updateQuantity(item.id, inCart.quantity - 1)
                                 }
                                 className="w-7 h-7 flex items-center justify-center border border-amber/30 text-amber rounded-sm hover:bg-amber/10 transition-colors text-sm"
+                                aria-label={`Remove one ${item.name}`}
                               >
-                                -
+                                −
                               </button>
-                              <span className="w-6 text-center text-ivory text-sm">
+                              <span className="w-6 text-center text-ivory text-sm tabular-nums">
                                 {inCart.quantity}
                               </span>
                               <button
                                 onClick={() =>
-                                  dispatch({
-                                    type: "UPDATE_QTY",
-                                    itemId: item.id,
-                                    quantity: inCart.quantity + 1,
-                                  })
+                                  updateQuantity(item.id, inCart.quantity + 1)
                                 }
                                 className="w-7 h-7 flex items-center justify-center border border-amber/30 text-amber rounded-sm hover:bg-amber/10 transition-colors text-sm"
+                                aria-label={`Add another ${item.name}`}
                               >
                                 +
                               </button>
                             </div>
                           ) : (
                             <button
-                              onClick={() => dispatch({ type: "ADD", item })}
+                              onClick={() => addItem(item)}
                               className="px-3 py-1.5 text-xs uppercase tracking-widest-plus border border-amber/30 text-amber rounded-sm hover:bg-amber/10 transition-colors"
                             >
                               Add
@@ -322,11 +252,21 @@ export default function OrderPage() {
           </div>
 
           {/* Cart & checkout */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
+          <div id="cart-panel" className="lg:sticky lg:top-28 lg:self-start">
             <div className="p-6 rounded-sm border border-amber/15 bg-espresso-light/50">
-              <h2 className="font-sans text-xs uppercase tracking-widest-plus text-amber mb-4">
-                Your Order
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-sans text-xs uppercase tracking-widest-plus text-amber">
+                  Your Order
+                </h2>
+                {cart.length > 0 && (
+                  <button
+                    onClick={clear}
+                    className="text-[10px] uppercase tracking-widest-plus text-ivory/30 hover:text-ivory/60 transition-colors"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
 
               {cart.length === 0 ? (
                 <p className="text-sm text-ivory/30 py-4">
@@ -346,7 +286,7 @@ export default function OrderPage() {
                         <span className="text-ivory/80">
                           {c.quantity}x {c.menuItem.name}
                         </span>
-                        <span className="text-amber">
+                        <span className="text-amber tabular-nums">
                           ${(c.menuItem.price * c.quantity).toFixed(2)}
                         </span>
                       </motion.div>
@@ -359,7 +299,7 @@ export default function OrderPage() {
                 <>
                   <div className="border-t border-amber/10 pt-3 mb-6 flex justify-between items-center">
                     <span className="text-sm text-ivory/60">Total</span>
-                    <span className="font-serif text-xl text-amber">
+                    <span className="font-serif text-xl text-amber tabular-nums">
                       ${total.toFixed(2)}
                     </span>
                   </div>
@@ -419,6 +359,34 @@ export default function OrderPage() {
             </div>
           </div>
         </div>
+
+      {/* Mobile sticky checkout bar */}
+      <AnimatePresence>
+        {cart.length > 0 && !confirmation && (
+          <motion.div
+            className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-espresso-light/95 backdrop-blur-sm border-t border-amber/15"
+            initial={{ y: 80 }}
+            animate={{ y: 0 }}
+            exit={{ y: 80 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <div className="px-4 py-3">
+              <button
+                onClick={() => {
+                  const el = document.getElementById("cart-panel");
+                  el?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="w-full flex items-center justify-between px-4 py-3 bg-amber text-espresso rounded-sm active:bg-amber-light transition-colors"
+              >
+                <span className="text-xs uppercase tracking-widest-plus font-medium">
+                  {itemCount} {itemCount === 1 ? "item" : "items"} · ${total.toFixed(2)}
+                </span>
+                <span className="text-xs uppercase tracking-widest-plus">Checkout →</span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       </div>
     </div>
   );
