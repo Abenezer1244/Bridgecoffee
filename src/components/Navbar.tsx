@@ -59,13 +59,13 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-8 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+        className={`fixed top-6 sm:top-8 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
           scrolled
             ? "bg-[rgba(13,10,7,0.82)] backdrop-blur-[12px]"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 grid grid-cols-[1fr_auto_1fr] items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 grid grid-cols-[1fr_auto_1fr] items-center">
           {/* Left: Brand */}
           <Link href="/" className="font-serif text-xl text-ivory tracking-tight">
             Bridge Coffee

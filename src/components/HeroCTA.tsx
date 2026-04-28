@@ -38,7 +38,7 @@ export default function HeroCTA() {
         <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
           <Link
             href="/menu"
-            className="pointer-events-auto px-8 py-3 bg-amber text-espresso font-sans text-sm uppercase tracking-widest-plus rounded-sm hover:bg-amber-light transition-colors duration-300"
+            className="pointer-events-auto px-6 sm:px-8 py-3 bg-amber text-espresso font-sans text-sm uppercase tracking-widest-plus rounded-sm hover:bg-amber-light transition-colors duration-300"
           >
             See the Menu
           </Link>
@@ -46,7 +46,7 @@ export default function HeroCTA() {
             href="https://maps.google.com/?q=2150+N+122nd+St+Seattle+WA+98133"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto px-8 py-3 border border-amber/40 text-amber font-sans text-sm uppercase tracking-widest-plus rounded-sm hover:border-amber hover:text-amber-light transition-colors duration-300"
+            className="pointer-events-auto px-6 sm:px-8 py-3 border border-amber/40 text-amber font-sans text-sm uppercase tracking-widest-plus rounded-sm hover:border-amber hover:text-amber-light transition-colors duration-300"
           >
             Find Us
           </a>

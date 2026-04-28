@@ -178,7 +178,7 @@ export default function OrderPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_380px] gap-8">
           {/* Menu browser */}
           <div className="space-y-8">
             {Object.entries(grouped).map(([category, items]) => (
@@ -316,7 +316,7 @@ export default function OrderPage() {
                         onChange={(e) => setCustomerName(e.target.value)}
                         placeholder="First name"
                         maxLength={100}
-                        className="w-full px-3 py-2 bg-espresso border border-amber/20 rounded-sm text-ivory placeholder:text-ivory/20 focus:border-amber focus:outline-none transition-colors text-sm"
+                        className="w-full px-3 py-3 sm:py-2 bg-espresso border border-amber/20 rounded-sm text-ivory placeholder:text-ivory/20 focus:border-amber focus:outline-none transition-colors text-sm"
                       />
                     </div>
 
@@ -327,7 +327,7 @@ export default function OrderPage() {
                       <select
                         value={pickupTime}
                         onChange={(e) => setPickupTime(e.target.value)}
-                        className="w-full px-3 py-2 bg-espresso border border-amber/20 rounded-sm text-ivory focus:border-amber focus:outline-none transition-colors text-sm"
+                        className="w-full px-3 py-3 sm:py-2 bg-espresso border border-amber/20 rounded-sm text-ivory focus:border-amber focus:outline-none transition-colors text-sm"
                       >
                         <option value="">Select a time</option>
                         {pickupOptions.map((opt) => (

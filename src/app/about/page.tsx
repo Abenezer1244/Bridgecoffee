@@ -92,7 +92,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
             {shopPhotos.slice(0, 9).map((photo, i) => (
               <motion.div
                 key={photo.src}

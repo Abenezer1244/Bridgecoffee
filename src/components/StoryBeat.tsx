@@ -43,16 +43,16 @@ export default function StoryBeat({
 
   const alignmentClass =
     alignment === "left"
-      ? "items-start text-left pl-8 md:pl-16 lg:pl-24"
+      ? "items-start text-left pl-4 sm:pl-8 md:pl-16 lg:pl-24"
       : alignment === "right"
-        ? "items-end text-right pr-8 md:pr-16 lg:pr-24"
+        ? "items-end text-right pr-4 sm:pr-8 md:pr-16 lg:pr-24"
         : "items-center text-center px-6";
 
   if (opacity <= 0.01) return null;
 
   return (
     <motion.div
-      className={`absolute inset-0 flex flex-col justify-center ${alignmentClass} max-w-5xl mx-auto`}
+      className={`absolute inset-0 flex flex-col justify-center ${alignmentClass} max-w-full sm:max-w-5xl mx-auto`}
       style={{
         opacity,
         transform: `translate3d(${translateX}px, ${translateY}px, 0)`,

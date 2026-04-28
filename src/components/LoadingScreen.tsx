@@ -19,12 +19,12 @@ export default function LoadingScreen({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          <h2 className="font-serif text-2xl md:text-3xl text-ivory mb-8">
+          <h2 className="font-serif text-xl sm:text-2xl md:text-3xl text-ivory mb-8">
             Bridge Coffee
           </h2>
 
           {/* Progress bar */}
-          <div className="w-48 h-[2px] bg-espresso-light rounded-full overflow-hidden">
+          <div className="w-[min(192px,60vw)] h-[2px] bg-espresso-light rounded-full overflow-hidden">
             <motion.div
               className="h-full bg-amber rounded-full"
               initial={{ width: 0 }}

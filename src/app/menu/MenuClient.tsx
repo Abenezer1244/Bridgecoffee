@@ -49,12 +49,12 @@ export default function MenuClient({ initialItems }: { initialItems: MenuItem[] 
         </div>
 
         {/* Category filters */}
-        <div className="flex overflow-x-auto gap-2 mb-12 pb-1 justify-start md:justify-center scrollbar-none [&::-webkit-scrollbar]:hidden">
+        <div className="flex overflow-x-auto gap-1.5 sm:gap-2 mb-12 pb-1 justify-start md:justify-center scrollbar-none [&::-webkit-scrollbar]:hidden">
           {categories.map((cat) => (
             <button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 text-xs uppercase tracking-widest-plus rounded-sm transition-colors duration-200 ${
+              className={`whitespace-nowrap px-3 py-1.5 sm:px-4 sm:py-2 text-xs uppercase tracking-widest-plus rounded-sm transition-colors duration-200 ${
                 activeCategory === cat.key
                   ? "bg-amber text-espresso"
                   : "text-ivory/50 hover:text-ivory border border-amber/20 hover:border-amber/40"
@@ -100,7 +100,7 @@ export default function MenuClient({ initialItems }: { initialItems: MenuItem[] 
           >
             <Link
               href="/order"
-              className="flex items-center gap-4 pl-4 pr-2 py-2 bg-amber text-espresso rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.45)] hover:-translate-y-0.5 transition-all duration-200"
+              className="flex items-center gap-4 pl-4 pr-2 py-3 bg-amber text-espresso rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.45)] hover:-translate-y-0.5 transition-all duration-200"
             >
               <span className="text-xs uppercase tracking-widest-plus font-medium">
                 {itemCount} {itemCount === 1 ? "item" : "items"} · $
