@@ -201,7 +201,7 @@ export function useImageSequence(
       }
 
       // Dark overlay — improves text contrast on all images
-      ctx.globalAlpha = 0.4;
+      ctx.globalAlpha = 0.25;
       ctx.fillStyle = "#0D0A07";
       ctx.fillRect(0, 0, width, height);
 
