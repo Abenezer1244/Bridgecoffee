@@ -237,7 +237,7 @@ export default function OrderPage() {
                           ) : (
                             <button
                               onClick={() => addItem(item)}
-                              className="px-3 py-1.5 text-xs uppercase tracking-widest-plus border border-amber/30 text-amber rounded-sm hover:bg-amber/10 transition-colors"
+                              className="px-3 py-3 text-xs uppercase tracking-widest-plus border border-amber/30 text-amber rounded-sm hover:bg-amber/10 transition-colors min-h-[44px]"
                             >
                               Add
                             </button>
