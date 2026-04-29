@@ -35,14 +35,14 @@ export default function MenuClient({ initialItems }: { initialItems: MenuItem[] 
       : items.filter((item) => item.category === activeCategory);
 
   return (
-    <div className="min-h-screen pt-28 pb-16 px-6">
+    <div className="min-h-screen bg-white text-espresso pt-28 pb-16 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="font-serif text-5xl md:text-7xl text-ivory tracking-tight">
+          <h1 className="font-serif text-5xl md:text-7xl text-espresso tracking-tight">
             Our Menu
           </h1>
-          <p className="mt-4 text-base text-ivory/50">
+          <p className="mt-4 text-base text-stone-500">
             Herkimer-roasted coffee and pastries baked the morning you&apos;re
             drinking them. Most drinks under $6.
           </p>
@@ -57,7 +57,7 @@ export default function MenuClient({ initialItems }: { initialItems: MenuItem[] 
               className={`whitespace-nowrap px-3 py-1.5 sm:px-4 sm:py-2 text-xs uppercase tracking-widest-plus rounded-sm transition-colors duration-200 ${
                 activeCategory === cat.key
                   ? "bg-amber text-espresso"
-                  : "text-ivory/50 hover:text-ivory border border-amber/20 hover:border-amber/40"
+                  : "text-stone-500 hover:text-espresso border border-stone-300 hover:border-amber/60"
               }`}
             >
               {cat.label}
@@ -82,7 +82,7 @@ export default function MenuClient({ initialItems }: { initialItems: MenuItem[] 
         </AnimatePresence>
 
         {filtered.length === 0 && (
-          <p className="text-center text-ivory/30 py-20">
+          <p className="text-center text-stone-400 py-20">
             No items in this category.
           </p>
         )}
@@ -123,21 +123,21 @@ function MenuCard({ item }: { item: MenuItem }) {
   const inCart = cart.find((c) => c.menuItem.id === item.id);
 
   return (
-    <div className="group flex flex-col p-6 rounded-sm border border-amber/10 hover:border-amber/25 bg-espresso-light/50 transition-colors duration-300">
+    <div className="group flex flex-col p-6 rounded-sm border border-stone-200 hover:border-amber/40 bg-white transition-colors duration-300">
       <div className="flex-1 flex justify-between items-start gap-4">
         <div className="flex-1">
-          <h3 className="font-serif text-xl text-ivory group-hover:text-amber-light transition-colors">
+          <h3 className="font-serif text-xl text-espresso group-hover:text-amber transition-colors">
             {item.name}
           </h3>
           {item.description && (
-            <p className="mt-2 text-sm leading-relaxed">{item.description}</p>
+            <p className="mt-2 text-sm text-stone-500 leading-relaxed">{item.description}</p>
           )}
           {item.dietary_tags.length > 0 && (
             <div className="mt-3 flex gap-2 flex-wrap">
               {item.dietary_tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-0.5 text-[10px] uppercase tracking-widest bg-amber/10 text-amber/70 rounded-sm"
+                  className="px-2 py-0.5 text-[10px] uppercase tracking-widest bg-amber/10 text-amber/80 rounded-sm"
                 >
                   {tag.replace("_", " ")}
                 </span>
@@ -150,7 +150,7 @@ function MenuCard({ item }: { item: MenuItem }) {
         </span>
       </div>
 
-      <div className="mt-5 pt-4 border-t border-amber/5 flex items-center justify-end">
+      <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-end">
         {inCart ? (
           <div className="flex items-center gap-2">
             <button
@@ -160,7 +160,7 @@ function MenuCard({ item }: { item: MenuItem }) {
             >
               −
             </button>
-            <span className="w-8 text-center text-ivory text-sm tabular-nums">
+            <span className="w-8 text-center text-espresso text-sm tabular-nums">
               {inCart.quantity}
             </span>
             <button
