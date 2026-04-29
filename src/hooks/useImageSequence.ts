@@ -200,6 +200,11 @@ export function useImageSequence(
         }
       }
 
+      // Dark overlay — improves text contrast on all images
+      ctx.globalAlpha = 0.4;
+      ctx.fillStyle = "#0D0A07";
+      ctx.fillRect(0, 0, width, height);
+
       // Draw vignette overlay
       ctx.globalAlpha = 1;
       drawVignette(ctx, width, height);
