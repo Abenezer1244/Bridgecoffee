@@ -56,6 +56,7 @@ export default function StoryBeat({
       style={{
         opacity,
         transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+        textShadow: "0 2px 16px rgba(0,0,0,0.75), 0 1px 4px rgba(0,0,0,0.5)",
       }}
     >
       {children}
