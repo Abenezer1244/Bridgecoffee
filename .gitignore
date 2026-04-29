@@ -32,3 +32,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.gstack/
+
+# audit/design-review artifacts
+audit/
+audit-screenshots.js
+audit.py
+homepage-*.png
+.playwright-mcp/
+tasks/
