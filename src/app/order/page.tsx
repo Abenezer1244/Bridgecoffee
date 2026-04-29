@@ -108,7 +108,7 @@ export default function OrderPage() {
   // Confirmation screen
   if (confirmation) {
     return (
-      <div className="min-h-screen bg-white text-espresso pt-28 pb-16 px-6 flex items-center justify-center">
+      <div className="min-h-screen pt-28 pb-16 px-6 flex items-center justify-center">
         <motion.div
           className="text-center max-w-md"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -120,12 +120,12 @@ export default function OrderPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="font-serif text-4xl text-espresso mb-2">Order Confirmed</h1>
+          <h1 className="font-serif text-4xl text-ivory mb-2">Order Confirmed</h1>
           <p className="text-amber text-lg font-mono mb-6">#{confirmation.orderId}</p>
-          <div className="space-y-2 text-sm text-stone-600">
+          <div className="space-y-2 text-sm">
             <p>
               Pickup at{" "}
-              <span className="text-espresso font-medium">
+              <span className="text-ivory">
                 {new Date(confirmation.pickupTime).toLocaleString("en-US", {
                   weekday: "short",
                   hour: "numeric",
@@ -136,7 +136,7 @@ export default function OrderPage() {
             <p>
               Total: <span className="text-amber">${confirmation.total.toFixed(2)}</span>
             </p>
-            <p className="text-stone-500 mt-4">Pay at the counter when you pick up.</p>
+            <p className="text-ivory/70 mt-4">Pay at the counter when you pick up.</p>
           </div>
           <button
             onClick={() => setConfirmation(null)}
@@ -166,13 +166,13 @@ export default function OrderPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-espresso pt-28 pb-28 lg:pb-16 px-6">
+    <div className="min-h-screen pt-28 pb-28 lg:pb-16 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="font-serif text-5xl md:text-7xl text-espresso tracking-tight">
+          <h1 className="font-serif text-5xl md:text-7xl text-ivory tracking-tight">
             Order for Pickup
           </h1>
-          <p className="mt-4 text-base text-stone-500">
+          <p className="mt-4 text-base text-ivory/50">
             Order ahead, pick up at the counter. We don&apos;t deliver.
             we&apos;d rather see you in person.
           </p>
@@ -192,11 +192,11 @@ export default function OrderPage() {
                     return (
                       <div
                         key={item.id}
-                        className="flex items-center justify-between p-4 rounded-sm border border-stone-200 hover:border-amber/40 bg-white transition-colors"
+                        className="flex items-center justify-between p-4 rounded-sm border border-amber/10 hover:border-amber/25 bg-espresso-light/30 transition-colors"
                       >
                         <div className="flex-1 min-w-0">
                           <div className="flex items-baseline gap-2">
-                            <span className="font-serif text-base text-espresso truncate">
+                            <span className="font-serif text-base text-ivory truncate">
                               {item.name}
                             </span>
                             <span className="text-sm text-amber">
@@ -204,7 +204,7 @@ export default function OrderPage() {
                             </span>
                           </div>
                           {item.description && (
-                            <p className="text-xs text-stone-400 mt-0.5 truncate">
+                            <p className="text-xs text-ivory/40 mt-0.5 truncate">
                               {item.description}
                             </p>
                           )}
@@ -221,7 +221,7 @@ export default function OrderPage() {
                               >
                                 −
                               </button>
-                              <span className="w-6 text-center text-espresso text-sm tabular-nums">
+                              <span className="w-6 text-center text-ivory text-sm tabular-nums">
                                 {inCart.quantity}
                               </span>
                               <button
@@ -253,7 +253,7 @@ export default function OrderPage() {
 
           {/* Cart & checkout */}
           <div id="cart-panel" className="lg:sticky lg:top-28 lg:self-start">
-            <div className="p-6 rounded-sm border border-stone-200 bg-stone-50">
+            <div className="p-6 rounded-sm border border-amber/15 bg-espresso-light/50">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-sans text-xs uppercase tracking-widest-plus text-amber">
                   Your Order
@@ -261,7 +261,7 @@ export default function OrderPage() {
                 {cart.length > 0 && (
                   <button
                     onClick={clear}
-                    className="text-[10px] uppercase tracking-widest-plus text-stone-400 hover:text-stone-700 transition-colors"
+                    className="text-[10px] uppercase tracking-widest-plus text-ivory/30 hover:text-ivory/60 transition-colors"
                   >
                     Clear
                   </button>
@@ -269,7 +269,7 @@ export default function OrderPage() {
               </div>
 
               {cart.length === 0 ? (
-                <p className="text-sm text-stone-400 py-4">
+                <p className="text-sm text-ivory/30 py-4">
                   Add items from the menu to get started.
                 </p>
               ) : (
@@ -283,7 +283,7 @@ export default function OrderPage() {
                         exit={{ opacity: 0, height: 0 }}
                         className="flex justify-between items-center text-sm"
                       >
-                        <span className="text-stone-700">
+                        <span className="text-ivory/80">
                           {c.quantity}x {c.menuItem.name}
                         </span>
                         <span className="text-amber tabular-nums">
@@ -297,8 +297,8 @@ export default function OrderPage() {
 
               {cart.length > 0 && (
                 <>
-                  <div className="border-t border-stone-200 pt-3 mb-6 flex justify-between items-center">
-                    <span className="text-sm text-stone-500">Total</span>
+                  <div className="border-t border-amber/10 pt-3 mb-6 flex justify-between items-center">
+                    <span className="text-sm text-ivory/60">Total</span>
                     <span className="font-serif text-xl text-amber tabular-nums">
                       ${total.toFixed(2)}
                     </span>
@@ -307,7 +307,7 @@ export default function OrderPage() {
                   {/* Checkout form */}
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-xs uppercase tracking-widest-plus text-stone-500 mb-1.5">
+                      <label className="block text-xs uppercase tracking-widest-plus text-ivory/40 mb-1.5">
                         Your Name
                       </label>
                       <input
@@ -316,18 +316,18 @@ export default function OrderPage() {
                         onChange={(e) => setCustomerName(e.target.value)}
                         placeholder="First name"
                         maxLength={100}
-                        className="w-full px-3 py-3 sm:py-2 bg-white border border-stone-300 rounded-sm text-espresso placeholder:text-stone-300 focus:border-amber focus:outline-none transition-colors text-sm"
+                        className="w-full px-3 py-3 sm:py-2 bg-espresso border border-amber/20 rounded-sm text-ivory placeholder:text-ivory/20 focus:border-amber focus:outline-none transition-colors text-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs uppercase tracking-widest-plus text-stone-500 mb-1.5">
+                      <label className="block text-xs uppercase tracking-widest-plus text-ivory/40 mb-1.5">
                         Pickup Time
                       </label>
                       <select
                         value={pickupTime}
                         onChange={(e) => setPickupTime(e.target.value)}
-                        className="w-full px-3 py-3 sm:py-2 bg-white border border-stone-300 rounded-sm text-espresso focus:border-amber focus:outline-none transition-colors text-sm"
+                        className="w-full px-3 py-3 sm:py-2 bg-espresso border border-amber/20 rounded-sm text-ivory focus:border-amber focus:outline-none transition-colors text-sm"
                       >
                         <option value="">Select a time</option>
                         {pickupOptions.map((opt) => (
@@ -339,7 +339,7 @@ export default function OrderPage() {
                     </div>
 
                     {error && (
-                      <p className="text-red-500 text-xs">{error}</p>
+                      <p className="text-red-400 text-xs">{error}</p>
                     )}
 
                     <button
@@ -348,7 +348,7 @@ export default function OrderPage() {
                       className={`w-full py-3 text-xs uppercase tracking-widest-plus rounded-sm transition-all duration-300 ${
                         canSubmit && !submitting
                           ? "bg-amber text-espresso hover:bg-amber-light"
-                          : "bg-stone-200 text-stone-400 cursor-not-allowed"
+                          : "bg-amber/20 text-ivory/30 cursor-not-allowed"
                       }`}
                     >
                       {submitting ? "Placing Order..." : "Place Order · Pay at Counter"}
@@ -364,7 +364,7 @@ export default function OrderPage() {
       <AnimatePresence>
         {cart.length > 0 && !confirmation && (
           <motion.div
-            className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-stone-200"
+            className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-espresso-light/95 backdrop-blur-sm border-t border-amber/15"
             initial={{ y: 80 }}
             animate={{ y: 0 }}
             exit={{ y: 80 }}

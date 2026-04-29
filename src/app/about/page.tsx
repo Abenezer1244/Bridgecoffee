@@ -25,7 +25,7 @@ function PhotoCard({ photo, index }: { photo: { src: string; alt: string }; inde
   return (
     <div className={`relative ${index === 0 ? "aspect-[4/3]" : "aspect-square"}`}>
       {!loaded && (
-        <div className="absolute inset-0 bg-stone-200 animate-pulse" />
+        <div className="absolute inset-0 bg-espresso-light/40 animate-pulse" />
       )}
       <Image
         src={photo.src}
@@ -58,8 +58,8 @@ const hours = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white text-espresso">
-      {/* Hero — keeps dark overlay + ivory text, it's a photo */}
+    <div className="min-h-screen">
+      {/* Hero */}
       <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
         <Image
           src="/images/shop/unnamed-7.webp"
@@ -83,10 +83,10 @@ export default function AboutPage() {
       <section className="py-20 md:py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div className="text-center mb-12" {...fadeInUp}>
-            <h2 className="font-serif text-3xl md:text-5xl text-espresso tracking-tight">
+            <h2 className="font-serif text-3xl md:text-5xl text-ivory tracking-tight">
               The Room
             </h2>
-            <p className="mt-4 text-base text-stone-500">
+            <p className="mt-4 text-base text-ivory/50">
               Big windows. Good light. Kids&apos; room off the side.
               Bike rack out front.
             </p>
@@ -112,10 +112,10 @@ export default function AboutPage() {
       </section>
 
       {/* Visit Us */}
-      <section id="find-us" className="py-20 md:py-28 px-6 bg-stone-50">
+      <section id="find-us" className="py-20 md:py-28 px-6 bg-espresso-light">
         <div className="max-w-4xl mx-auto">
           <motion.div className="text-center" {...fadeInUp}>
-            <h2 className="font-serif text-3xl md:text-5xl text-espresso tracking-tight mb-12">
+            <h2 className="font-serif text-3xl md:text-5xl text-ivory tracking-tight mb-12">
               Come say hi.
             </h2>
 
@@ -130,18 +130,18 @@ export default function AboutPage() {
                     href="https://maps.google.com/?q=2150+N+122nd+St+Seattle+WA+98133"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-lg text-espresso hover:text-amber transition-colors"
+                    className="block text-lg text-ivory hover:text-amber transition-colors"
                   >
                     2150 N 122nd St
                     <br />
                     Seattle, WA 98133
                   </a>
-                  <p className="text-sm text-stone-400">
+                  <p className="text-sm text-ivory/40">
                     Inside North Seattle Church. Park in the church lot.
                   </p>
                   <a
                     href="tel:+12064578690"
-                    className="block text-stone-600 hover:text-amber transition-colors"
+                    className="block text-ivory/70 hover:text-amber transition-colors"
                   >
                     (206) 457-8690
                   </a>
@@ -156,8 +156,8 @@ export default function AboutPage() {
                 <div className="space-y-1.5">
                   {hours.map(({ day, time }) => (
                     <div key={day} className="flex justify-between text-sm max-w-[240px]">
-                      <span className="text-stone-500">{day}</span>
-                      <span className={time === "Closed" ? "text-stone-300" : "text-stone-700"}>
+                      <span className="text-ivory/50">{day}</span>
+                      <span className={time === "Closed" ? "text-ivory/30" : "text-ivory/70"}>
                         {time}
                       </span>
                     </div>
@@ -177,7 +177,7 @@ export default function AboutPage() {
                 href="https://search.google.com/local/writereview?placeid=ChIJtz_tTE8RkFQRyyJO7XAnny4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3 border border-amber/40 text-amber font-sans text-sm uppercase tracking-widest-plus rounded-sm hover:border-amber/70 transition-colors duration-300"
+                className="inline-flex items-center gap-2 px-8 py-3 border border-amber/30 text-amber font-sans text-sm uppercase tracking-widest-plus rounded-sm hover:border-amber/60 transition-colors duration-300"
               >
                 Leave a Review
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
