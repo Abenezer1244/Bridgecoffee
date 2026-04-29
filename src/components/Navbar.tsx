@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useCart } from "@/contexts/CartContext";
 
 const navLinks = [
-  { label: "Story", href: "/", activeOn: "/" },
+  { label: "Story", href: "/#story", activeOn: "/" },
   { label: "Menu", href: "/menu", activeOn: "/menu" },
   { label: "Visit", href: "/about", activeOn: "/about" },
   { label: "Order", href: "/order", activeOn: "/order" },
@@ -201,7 +201,7 @@ function NavLink({
     <Link
       href={href}
       onClick={onClick}
-      className={`relative font-sans text-xs uppercase tracking-widest-plus transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-amber after:transition-all after:duration-300 hover:after:w-full ${
+      className={`relative font-sans text-xs uppercase tracking-widest-plus transition-colors duration-200 py-3 after:absolute after:bottom-[8px] after:left-0 after:h-[2px] after:bg-amber after:transition-all after:duration-300 hover:after:w-full ${
         isActive
           ? "text-ivory after:w-full"
           : "text-ivory/60 hover:text-ivory after:w-0"
