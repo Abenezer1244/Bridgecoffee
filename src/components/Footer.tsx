@@ -24,7 +24,7 @@ export default function Footer() {
               A non-profit cafe in North Seattle since 2012. Coffee,
               community, and a table for whoever needs one.
             </p>
-            <p className="mt-4 text-xs text-ivory/30">
+            <p className="mt-4 text-xs text-ivory/45">
               Inside North Seattle Church · 2150 N 122nd St
             </p>
           </div>
@@ -76,19 +76,19 @@ export default function Footer() {
             <div className="mt-6 flex gap-4 flex-wrap">
               <Link
                 href="/menu"
-                className="text-xs uppercase tracking-widest-plus text-ivory/40 hover:text-amber transition-colors"
+                className="text-xs uppercase tracking-widest-plus text-ivory/40 hover:text-amber transition-colors py-2 inline-block"
               >
                 Menu
               </Link>
               <Link
                 href="/order"
-                className="text-xs uppercase tracking-widest-plus text-ivory/40 hover:text-amber transition-colors"
+                className="text-xs uppercase tracking-widest-plus text-ivory/40 hover:text-amber transition-colors py-2 inline-block"
               >
                 Order
               </Link>
               <Link
                 href="/about"
-                className="text-xs uppercase tracking-widest-plus text-ivory/40 hover:text-amber transition-colors"
+                className="text-xs uppercase tracking-widest-plus text-ivory/40 hover:text-amber transition-colors py-2 inline-block"
               >
                 About
               </Link>
