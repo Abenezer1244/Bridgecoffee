@@ -3,7 +3,7 @@ import { ImageFrame } from "@/types";
 export const imageSequence: ImageFrame[] = [
   {
     src: "/images/sequence/01-hero-latte.webp",
-    alt: "Latte rosetta in a white ceramic cup on weathered wood against a dark background — hero beauty shot",
+    alt: "Cappuccino in a white ceramic cup — hero beauty shot",
     startProgress: 0,
     endProgress: 0.15,
   },
@@ -21,25 +21,25 @@ export const imageSequence: ImageFrame[] = [
   },
   {
     src: "/images/sequence/07-beans-focus.webp",
-    alt: "Individual beans on white surface with sharp focus and long shadows — single-origin detail",
+    alt: "Close-up of coffee in a glass on a wooden surface — single-origin detail",
     startProgress: 0.45,
     endProgress: 0.6,
   },
   {
     src: "/images/sequence/08-espresso-glass.webp",
-    alt: "Espresso in glass cup on wood slice with dramatic shadow-stripe lighting",
+    alt: "Man enjoying coffee at a cafe table — warm atmosphere",
     startProgress: 0.6,
     endProgress: 0.7,
   },
   {
     src: "/images/sequence/03-cappuccino.webp",
-    alt: "Cappuccino in white ceramic cup with cocoa dust and soft blurred background",
+    alt: "Sweet pastry beside a coffee cup — cafe treats",
     startProgress: 0.7,
     endProgress: 0.8,
   },
   {
     src: "/images/sequence/06-latte-window.webp",
-    alt: "Latte art in dark cup on white cafe table with natural window light",
+    alt: "Cozy coffee shop interior with warm lighting and seating",
     startProgress: 0.8,
     endProgress: 0.88,
   },
