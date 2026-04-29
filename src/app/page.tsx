@@ -49,7 +49,7 @@ export default function Home() {
                 open, and helps fund the church&apos;s family programs
                 next door.
               </p>
-              <p className="mt-3 max-w-lg text-sm text-ivory/40 leading-relaxed">
+              <p className="mt-3 max-w-lg text-sm text-ivory/55 leading-relaxed">
                 Started by neighbors who wanted a table where everyone was welcome.
               </p>
             </StoryBeat>
@@ -77,7 +77,7 @@ export default function Home() {
                   The caramel latte has a list of regulars. The orange
                   hazelnut bun sells out before noon.
                 </p>
-                <p className="text-xs uppercase tracking-widest-plus text-amber/60">
+                <p className="text-xs uppercase tracking-widest-plus text-amber/80">
                   If it doesn&apos;t taste right, it doesn&apos;t reach the counter.
                 </p>
               </div>
@@ -104,7 +104,7 @@ export default function Home() {
               <p className="mt-3 max-w-lg text-sm text-ivory/50 leading-relaxed text-center">
                 Heated covered porch when it&apos;s cold. Bike rack out front.
               </p>
-              <p className="mt-4 max-w-lg text-xs text-ivory/30 italic text-center">
+              <p className="mt-4 max-w-lg text-xs text-ivory/45 italic text-center">
                 Devon runs the counter. He&apos;s probably why you keep coming back.
               </p>
             </StoryBeat>
@@ -115,7 +115,7 @@ export default function Home() {
                 className="fixed bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-none flex flex-col items-center gap-1.5"
                 style={{ opacity: Math.max(0, 1 - progress / 0.05) }}
               >
-                <span className="text-[9px] uppercase tracking-widest-plus text-ivory/30">Scroll</span>
+                <span className="text-[11px] uppercase tracking-widest-plus text-ivory/30">Scroll</span>
                 <svg
                   className="w-4 h-4 text-ivory/30 animate-bounce"
                   fill="none"
